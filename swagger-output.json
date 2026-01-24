@@ -1,0 +1,308 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Fintech API - FutureBank Insights",
+    "description": "API for managing bank accounts and digital banking trends",
+    "version": "1.0.0"
+  },
+  "host": "",
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/accounts/": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accountNumber": {
+                  "example": "any"
+                },
+                "accountType": {
+                  "example": "any"
+                },
+                "balance": {
+                  "example": "any"
+                },
+                "currency": {
+                  "example": "any"
+                },
+                "interestRate": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "ownerId": {
+                  "example": "any"
+                },
+                "openDate": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/accounts/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accountNumber": {
+                  "example": "any"
+                },
+                "accountType": {
+                  "example": "any"
+                },
+                "balance": {
+                  "example": "any"
+                },
+                "currency": {
+                  "example": "any"
+                },
+                "interestRate": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "ownerId": {
+                  "example": "any"
+                },
+                "openDate": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/transactions/": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "description": "Endpoint to create a new financial transaction",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Transaction details",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "example": "6973f127..."
+                },
+                "type": {
+                  "type": "string",
+                  "example": "Deposit"
+                },
+                "amount": {
+                  "type": "number",
+                  "example": 5000
+                },
+                "date": {
+                  "type": "string",
+                  "example": "2026-01-23"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Payment for services"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Completed"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "account": {
+      "type": "object",
+      "properties": {
+        "accountNumber": {
+          "type": "string",
+          "example": "SB-1783-LIB"
+        },
+        "accountType": {
+          "type": "string",
+          "example": "Savings"
+        },
+        "balance": {
+          "type": "number",
+          "example": 50000
+        },
+        "currency": {
+          "type": "string",
+          "example": "USD"
+        },
+        "interestRate": {
+          "type": "number",
+          "example": 0.05
+        },
+        "status": {
+          "type": "string",
+          "example": "Active"
+        },
+        "ownerId": {
+          "type": "string",
+          "example": "Simón Bolívar"
+        },
+        "openDate": {
+          "type": "string",
+          "example": "2026-01-23"
+        }
+      }
+    },
+    "transaction": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "example": "6973f127..."
+        },
+        "type": {
+          "type": "string",
+          "example": "Deposit"
+        },
+        "amount": {
+          "type": "number",
+          "example": 5000
+        },
+        "date": {
+          "type": "string",
+          "example": "2026-01-23"
+        },
+        "description": {
+          "type": "string",
+          "example": "Logistics funding"
+        },
+        "status": {
+          "type": "string",
+          "example": "Completed"
+        }
+      }
+    }
+  }
+}
