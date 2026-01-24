@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 // Create a new account
 const createAccount = async (req, res) => {
     /* #swagger.tags = ['Accounts']
-       #swagger.parameters['body'] = {
+        #swagger.parameters['body'] = {
             in: 'body',
             description: 'New account details',
             required: true,
