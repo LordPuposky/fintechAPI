@@ -80,7 +80,7 @@
                 },
                 "ownerId": {
                   "type": "string",
-                  "example": "65a... (User ID)"
+                  "example": "User Name"
                 },
                 "openDate": {
                   "type": "string",
@@ -119,7 +119,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Updated account details",
+            "description": "Account details to update",
             "required": true,
             "schema": {
               "type": "object",
@@ -134,7 +134,7 @@
                 },
                 "balance": {
                   "type": "number",
-                  "example": 1500
+                  "example": 5000
                 },
                 "currency": {
                   "type": "string",
@@ -150,7 +150,7 @@
                 },
                 "ownerId": {
                   "type": "string",
-                  "example": "65a..."
+                  "example": "User Name"
                 },
                 "openDate": {
                   "type": "string",
