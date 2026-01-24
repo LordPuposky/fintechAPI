@@ -30,6 +30,9 @@ const createAccount = async (req, res) => {
         const response = await account.save();
         res.status(201).json(response);
     } catch (err) {
+        if (err.name === 'ValidationError') {
+            return res.status(400).json({ message: err.message });
+        }
         res.status(500).json({ message: err.message || 'Some error occurred while creating the account.' });
     }
 };
@@ -56,7 +59,10 @@ const updateAccount = async (req, res) => {
             res.status(204).send();
         }
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        if (err.name === 'ValidationError') {
+            return res.status(400).json({ message: err.message });
+        }
+        res.status(500).json({ message: err.message || 'Some error occurred while updating the account.' });
     }
 };
 
