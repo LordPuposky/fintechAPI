@@ -6,7 +6,7 @@ const doc = {
         description: 'API for managing bank accounts and digital banking trends',
     },
     // Leaving host empty or using a variable allows it to adapt to Render or Localhost
-    host: 'project02-cse341-byu.onrender.com', // Replace with your actual Render URL later
+    host:" ",
     schemes: ['https', 'http'], // Render uses https by default
     definitions: {
         // Adding definitions helps Swagger know the structure of your data
