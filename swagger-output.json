@@ -210,6 +210,9 @@
           "Transactions"
         ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -223,19 +226,18 @@
         "tags": [
           "Transactions"
         ],
-        "description": "Endpoint to create a new financial transaction",
+        "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "description": "Transaction details",
-            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "accountId": {
                   "type": "string",
-                  "example": "6973f127..."
+                  "example": "697406a74e7fbd583b36ad60"
                 },
                 "type": {
                   "type": "string",
@@ -243,19 +245,15 @@
                 },
                 "amount": {
                   "type": "number",
-                  "example": 5000
+                  "example": 500
                 },
                 "date": {
                   "type": "string",
-                  "example": "2026-01-23"
+                  "example": "2026-01-24"
                 },
                 "description": {
                   "type": "string",
-                  "example": "Payment for services"
-                },
-                "status": {
-                  "type": "string",
-                  "example": "Completed"
+                  "example": "Monthly savings"
                 }
               }
             }
@@ -276,7 +274,13 @@
     },
     "/transactions/{id}": {
       "get": {
+        "tags": [
+          "Transactions"
+        ],
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -286,8 +290,14 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -310,29 +320,17 @@
             "schema": {
               "type": "object",
               "properties": {
-                "accountId": {
-                  "type": "string",
-                  "example": "69740833..."
-                },
                 "type": {
                   "type": "string",
-                  "example": "Deposit"
+                  "example": "Withdrawal"
                 },
                 "amount": {
                   "type": "number",
-                  "example": 5000
-                },
-                "date": {
-                  "type": "string",
-                  "example": "2026-01-23"
+                  "example": 200
                 },
                 "description": {
                   "type": "string",
                   "example": "Updated description"
-                },
-                "status": {
-                  "type": "string",
-                  "example": "Completed"
                 }
               }
             }
