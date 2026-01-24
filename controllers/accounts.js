@@ -14,8 +14,24 @@ const getAll = async (req, res) => {
 
 // Create a new account
 const createAccount = async (req, res) => {
+    /* #swagger.tags = ['Accounts']
+        #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'New account details',
+            required: true,
+            schema: {
+                accountNumber: '123456789',
+                accountType: 'Savings',
+                balance: 1000,
+                currency: 'USD',
+                interestRate: 0.02,
+                status: 'Active',
+                ownerId: '65a... (User ID)',
+                openDate: '2026-01-24'
+            }
+        }
+    */
     try {
-        // #swagger.tags = ['Accounts']
         const account = new Account({
             accountNumber: req.body.accountNumber,
             accountType: req.body.accountType,
@@ -39,6 +55,23 @@ const createAccount = async (req, res) => {
 
 // Update an account
 const updateAccount = async (req, res) => {
+    /* #swagger.tags = ['Accounts']
+        #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'Updated account details',
+            required: true,
+            schema: {
+                accountNumber: '123456789',
+                accountType: 'Savings',
+                balance: 1500,
+                currency: 'USD',
+                interestRate: 0.02,
+                status: 'Active',
+                ownerId: '65a...',
+                openDate: '2026-01-24'
+            }
+        }
+    */
     try {
         const accountId = req.params.id;
         const account = {
@@ -52,7 +85,12 @@ const updateAccount = async (req, res) => {
             openDate: req.body.openDate
         };
 
-        const response = await Account.findByIdAndUpdate(accountId, account, { new: true });
+        // runValidators: true asegura que se valide el ENUM y tipos al actualizar
+        const response = await Account.findByIdAndUpdate(accountId, account, {
+            new: true,
+            runValidators: true
+        });
+
         if (!response) {
             res.status(404).json({ message: 'Account not found' });
         } else {
@@ -69,6 +107,7 @@ const updateAccount = async (req, res) => {
 // Delete an account
 const deleteAccount = async (req, res) => {
     try {
+        // #swagger.tags = ['Accounts']
         const accountId = req.params.id;
         const response = await Account.findByIdAndDelete(accountId);
 
@@ -78,7 +117,7 @@ const deleteAccount = async (req, res) => {
             res.status(200).json({ message: `Account ${accountId} deleted successfully` });
         }
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message || 'Some error occurred while deleting the account.' });
     }
 };
 

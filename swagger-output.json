@@ -49,32 +49,42 @@
           {
             "name": "body",
             "in": "body",
+            "description": "New account details",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "accountNumber": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "123456789"
                 },
                 "accountType": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Savings"
                 },
                 "balance": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 1000
                 },
                 "currency": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "USD"
                 },
                 "interestRate": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 0.02
                 },
                 "status": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Active"
                 },
                 "ownerId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "65a... (User ID)"
                 },
                 "openDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "2026-01-24"
                 }
               }
             }
@@ -95,6 +105,9 @@
     },
     "/accounts/{id}": {
       "put": {
+        "tags": [
+          "Accounts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -106,32 +119,42 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Updated account details",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "accountNumber": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "123456789"
                 },
                 "accountType": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Savings"
                 },
                 "balance": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 1500
                 },
                 "currency": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "USD"
                 },
                 "interestRate": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 0.02
                 },
                 "status": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Active"
                 },
                 "ownerId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "65a..."
                 },
                 "openDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "2026-01-24"
                 }
               }
             }
@@ -153,6 +176,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Accounts"
+        ],
         "description": "",
         "parameters": [
           {
