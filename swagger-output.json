@@ -279,6 +279,40 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Transaction details to update",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "example": "69740833..."
+                },
+                "type": {
+                  "type": "string",
+                  "example": "Deposit"
+                },
+                "amount": {
+                  "type": "number",
+                  "example": 5000
+                },
+                "date": {
+                  "type": "string",
+                  "example": "2026-01-23"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Updated description"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Completed"
+                }
+              }
+            }
           }
         ],
         "responses": {
