@@ -1,0 +1,31 @@
+POST http://localhost:8080/accounts HTTP/1.1
+content-type: application/json
+
+{
+    "accountNumber": "123456789",
+    "accountType": "Savings",
+    "balance": 5000,
+    "currency": "USD",
+    "interestRate": 0.05,
+    "status": "Active",
+    "ownerId": "user_01",
+    "openDate": "2026-01-23"
+}
+
+### Update an existing account
+PUT http://localhost:8080/accounts/6973f127fcef45b95ff18348 HTTP/1.1
+content-type: application/json
+
+{
+    "accountNumber": "123456789",
+    "accountType": "Checking",
+    "balance": 7500,
+    "currency": "USD",
+    "interestRate": 0.05,
+    "status": "Active",
+    "ownerId": "user_01",
+    "openDate": "2026-01-23"
+}
+
+### Delete an account
+DELETE http://localhost:8080/accounts/6973f127fcef45b95ff18348 HTTP/1.1
