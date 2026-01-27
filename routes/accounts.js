@@ -1,14 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const accountsController = require('../controllers/accounts');
+// Import the authentication middleware
+const { isAuthenticated } = require("../middleware/authenticate");
 
-// Route to get all accounts
+// Public route (anyone can view accounts)
 router.get('/', accountsController.getAll);
-// Route to create a new account
-router.post('/', accountsController.createAccount);
-// Route for updating an account using its ID
-router.put('/:id', accountsController.updateAccount);
-// Route for deleting an account using its ID
-router.delete('/:id', accountsController.deleteAccount);
+router.get('/:id', accountsController.getSingle);
+
+// Protected routes (requires login)
+router.post('/', isAuthenticated, accountsController.createAccount);
+router.put('/:id', isAuthenticated, accountsController.updateAccount);
+router.delete('/:id', isAuthenticated, accountsController.deleteAccount);
 
 module.exports = router;
