@@ -6,7 +6,7 @@ const { isAuthenticated } = require("../middleware/authenticate");
 
 // Public route (anyone can view accounts)
 router.get('/', accountsController.getAll);
-router.get('/:id', accountsController.getSingle);
+router.get('/:id', accountsController.getTransactionById);
 
 // Protected routes (requires login)
 router.post('/', isAuthenticated, accountsController.createAccount);

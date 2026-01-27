@@ -4,7 +4,7 @@ const transactionsController = require('../controllers/transactions');
 const { isAuthenticated } = require("../middleware/authenticate");
 
 router.get('/', transactionsController.getAll);
-router.get('/:id', transactionsController.getSingle);
+router.get('/:id', transactionsController.getTransactionById);
 
 // Protect all state-changing operations
 router.post('/', isAuthenticated, transactionsController.createTransaction);

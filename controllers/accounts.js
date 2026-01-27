@@ -99,8 +99,25 @@ const deleteAccount = async (req, res) => {
     }
 };
 
+// Get a single account by ID
+const getSingle = async (req, res) => {
+    // #swagger.tags = ['Accounts']
+    try {
+        const accountId = req.params.id;
+        const account = await Account.findById(accountId);
+        if (!account) {
+            return res.status(404).json({ message: 'Account not found' });
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(account);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 module.exports = {
     getAll,
+    getTransactionById,
     createAccount,
     updateAccount,
     deleteAccount
