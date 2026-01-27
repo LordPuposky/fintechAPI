@@ -1,10 +1,26 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
-// Root route
+// Root route: Shows a welcome message or login status
 router.get('/', (req, res) => {
     // #swagger.tags = ['General']
-    res.send('Project 02 - Fintech API is Running');
+    // Check if the user is logged in via the session object
+    res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out");
+});
+
+// Login route: Triggers the GitHub authentication process
+router.get('/login', passport.authenticate('github', (req, res) => {
+    // This function is handled by Passport
+}));
+
+// Logout route: Terminate the session and redirect back to root
+router.get('/logout', function (req, res, next) {
+    // Passport's logout method
+    req.logout(function (err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
 });
 
 // Link the accounts routes
