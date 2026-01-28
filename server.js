@@ -13,6 +13,9 @@ const port = process.env.PORT || 8080;
 // 1. MIDDLEWARE CONFIGURATION
 app.use(express.json()); // Parse JSON request bodies
 
+// CORS Configuration using the 'cors' library for better compatibility
+app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'], origin: '*', credentials: true }));
+
 // Express Session configuration
 app.use(session({
     secret: process.env.SESSION_SECRET, // Key to sign the session ID cookie
@@ -23,9 +26,6 @@ app.use(session({
 // Initialize Passport and link it to the session
 app.use(passport.initialize());
 app.use(passport.session());
-
-// CORS Configuration using the 'cors' library for better compatibility
-app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'], origin: '*' }));
 
 // 2. PASSPORT STRATEGY CONFIGURATION
 // Setting up the GitHub OAuth strategy with credentials from .env

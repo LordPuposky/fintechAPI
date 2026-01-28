@@ -100,7 +100,7 @@ const deleteAccount = async (req, res) => {
 };
 
 // Get a single account by ID
-const getSingle = async (req, res) => {
+const getTransactionById = async (req, res) => {
     // #swagger.tags = ['Accounts']
     try {
         const accountId = req.params.id;

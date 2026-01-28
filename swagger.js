@@ -7,7 +7,7 @@ const doc = {
     },
     // Leaving host empty or using a variable allows it to adapt to Render or Localhost
     host: "",
-    schemes: ['https', 'http'], // Render uses https by default
+    schemes: ['http', 'https'], // Render uses https by default
     definitions: {
         // Adding definitions helps Swagger know the structure of your data
         account: {
