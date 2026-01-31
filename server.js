@@ -16,7 +16,7 @@ app.use(express.json()); // Parse JSON request bodies
 // CORS Configuration using the 'cors' library for better compatibility
 app.use(cors({
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
-    origin: true,
+    origin: 'https://fintechapi-77qc.onrender.com',
     credentials: true
 }));
 
@@ -26,10 +26,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: process.env.NODE_ENV === 'production',
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        secure: true,
+        sameSite: 'none'
     }
 }));
 
@@ -67,7 +65,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Callback route where GitHub redirects the user after login
 app.get('/github/callback', passport.authenticate('github', {
-    failureRedirect: '/api-docs'
+    failureRedirect: '/api-docs', session: false
 }), (req, res) => {
     // Successfully logged in, save user info to the session
     req.session.user = req.user;
