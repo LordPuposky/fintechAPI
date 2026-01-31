@@ -14,13 +14,21 @@ const port = process.env.PORT || 8080;
 app.use(express.json()); // Parse JSON request bodies
 
 // CORS Configuration using the 'cors' library for better compatibility
-app.use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'], origin: '*', credentials: true }));
+app.use(cors({
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+    origin: 'https://fintechapi-77qc.onrender.com',
+    credentials: true
+}));
 
 // Express Session configuration
 app.use(session({
-    secret: process.env.SESSION_SECRET, // Key to sign the session ID cookie
-    resave: false, // Don't save session if unmodified
-    saveUninitialized: true, // Save new sessions even if they haven't been modified
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: true,
+        sameSite: 'none'
+    }
 }));
 
 // Initialize Passport and link it to the session
