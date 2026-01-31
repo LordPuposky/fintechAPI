@@ -13,6 +13,9 @@ const port = process.env.PORT || 8080;
 // 1. MIDDLEWARE CONFIGURATION
 app.use(express.json()); // Parse JSON request bodies
 
+// Ajuste para confiar en el proxy de Render y permitir cookies seguras
+app.set('trust proxy', 1);
+
 // CORS Configuration using the 'cors' library for better compatibility
 app.use(cors({
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
@@ -20,12 +23,15 @@ app.use(cors({
     credentials: true
 }));
 
-// Express Session configuration
+// Express Session configuration con ajustes para producción en Render
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: { 
+        secure: true, 
+        sameSite: 'none' 
+    }
 }));
 
 
