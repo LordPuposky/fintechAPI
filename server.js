@@ -24,12 +24,10 @@ app.use(cors({
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: true,
-        sameSite: 'none'
-    }
+    saveUninitialized: true,
+    cookie: { secure: true }
 }));
+
 
 // Initialize Passport and link it to the session
 app.use(passport.initialize());
